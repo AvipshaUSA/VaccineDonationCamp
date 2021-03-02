@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Pradip\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Pradip\\.nuget\\packages"
+    ]
+  }
+}

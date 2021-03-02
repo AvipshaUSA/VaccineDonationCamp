@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>@ViewBag.title</h1>
+
+<form method="post" action="/patient/edit">
+
+    <input type="hidden" value="@ViewBag.patientObj.Id" name="patientId" />
+    <p> Edit First Name:</p>
+    <input type="text" name="firstName" value="@ViewBag.patientObj.FirstName" />
+
+
+    <p>Edit Last Name:</p>
+    <input type="text" name="lastName" value="@ViewBag.patientObj.LastName" />
+
+
+    <p>Edit DOB</p>
+    <input type="date" name="dob" value="@ViewBag.patientObj.Dob" />
+
+
+    <p>  Edit Email</p>
+    <input type="email" name="email" value="@ViewBag.patientObj.Email" />
+
+
+
+    <p>  Edit Address</p>
+    <input type="text" name="address" value="@ViewBag.patientObj.Address" />
+
+    <p>  Edit City</p>
+    <input type="text" name="city" value="@ViewBag.patientObj.City" />
+
+
+    <p>  Edit State</p>
+    <input type="text" name="state" value="@ViewBag.patientObj.State" />
+
+    <p>  Edit Zip</p>
+    <input type="text" name="zip" value="@ViewBag.patientObj.Zip" />
+
+    <input type="Submit" value="Edit Patient!" />
+
+
+
+</form>

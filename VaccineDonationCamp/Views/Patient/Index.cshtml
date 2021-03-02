@@ -1,0 +1,76 @@
+﻿
+@using VaccineDonationCamp.Models
+
+@model List<Patient>
+
+<h1> Patient Info </h1>
+
+
+@if (Model.Count == 0)
+{
+    <p>No Events yet!!</p>
+}
+else
+{
+<table id="customers">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date Of Birth</th>
+        <th>Contact No</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Admin</th>
+    </tr>
+
+
+    @foreach (var patient in Model)
+    {
+      <tr>
+          <td>@patient.Id</td>
+          <td>@patient.FirstName</td>
+          <td>@patient.LastName</td>
+          <td>@patient.Dob</td>
+          <td>@patient.ContactNo</td>
+          <td>@patient.Email</td>
+          <td>@patient.Address</td>
+          <td>@patient.City</td>
+          <td>@patient.State</td>
+          <td>@patient.Zip</td>
+          <td>
+              <table id ="child">
+                  <tr>
+                      
+                      <form method="post" action="/Patient/Delete">
+                          <input type="hidden" name="PatientIds" value="@patient.Id" />
+                          <input type="submit" value="Delete">
+
+                          @*<a asp-area="">Delete</a>*@
+                      </form> 
+                  
+
+                      @*<a asp-controller="Patient" asp-action="Delete" asp-route-id="@patient.Id">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </a>*@
+                      
+                      <a asp-controller="Patient" asp-action="Edit" asp-route-id="@patient.Id">
+                          <input type="submit" value="Edit" >
+
+                      </a>
+                          
+                  </tr>
+              </table>
+
+
+              
+          </td>
+      </tr>
+
+    }
+
+    </table>
+    }
