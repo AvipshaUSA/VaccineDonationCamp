@@ -7,12 +7,59 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/custom.css" />
+
+
+
+
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours() - 12;
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+
+
+            document.getElementById('time').innerHTML =
+                h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+
+
+
+            var t = setTimeout(startTime, 500);
+            n = new Date();
+            y = n.getFullYear();
+            m = n.getMonth() + 1;
+            d = n.getDate();
+
+            document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+
+
+
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
+        }
+
+        setInterval(() => {
+            document.title = new Date().toLocaleTimeString();
+        }, 1);
+        
+       
+    </script>
+
 </head>
-<body>
+<body onload="startTime()">
+    
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">VaccineDonationCamp</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+
+                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="privacy">more</a>*@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,21 +67,33 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Patient" asp-action="Add">Add Patient</a>
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Patient" asp-action="Add">Add Patient</a>*@
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="privacy">Policy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Patient" asp-action="Index">Patent List</a>
-                        </li>
+                        @*<li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Patient" asp-action="Index">Patent List</a>
+                    </li>*@
                     </ul>
+                </div>
+            </div>
+            @*<div class="navbar-light" id="txt"></div>*@@*clock*@
+            <div class="line">
+                <div class="time">
+                  
+                    <a id="time"></a>
+                      
+                    <a id="date"></a>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">

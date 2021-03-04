@@ -2,26 +2,40 @@
 
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-
-<ul class="navbar-nav">
+@*<ul class="navbar-nav">*@
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-    </li>
-    <li class="nav-item">
-        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit" class="nav-link btn btn-link text-white-50">Logout</button>
-        </form>
-    </li>
+    <div class="form-inline">
+    @*<li class="nav-item">*@
+    <a id="manage" class="text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User) !</a>
+    @*</li>*@
+    @*<li class="nav-item">*@
+    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <button id="logout" type="submit" class="nav-link btn btn-link text-white">Logout</button>
+    </form>
+
+        </div>
+    @*</li>*@
 }
 else
 {
-    <li>
-        <a class="text-white" id="register" asp-area="Identity" asp-page="/Account/Register">Sing UP</a>
-    </li>
-    <li>
-        <a class="text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+
+
+
+    <div class="dropdown">
+        @*<button class="dropbtn">Register</button>*@
+        <div class="dropdown-content">
+
+
+            <a class="text-white" id="register" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+
+
+            <a class="text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+
+
+        </div>
+    </div>
+
+    
 }
-</ul>
+@*</ul>*@
